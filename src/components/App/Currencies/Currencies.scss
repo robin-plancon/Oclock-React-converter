@@ -1,0 +1,41 @@
+@use '../../../styles/variables' as v;
+
+.currencies {
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: v.$color;
+  color: v.$color-primary;
+  height: 60%;
+  overflow: scroll;
+  overflow-x: hidden;
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    border-bottom: 1px solid v.$color-primary;
+    padding: 1rem 0;
+    background-color: v.$color;
+    transition: background-color 1s;
+
+    &:hover {
+      background-color: v.$color-alt;
+      transition: background-color 0.2s;
+    }
+  }
+}
