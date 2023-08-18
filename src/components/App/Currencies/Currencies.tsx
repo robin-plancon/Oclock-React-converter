@@ -1,10 +1,8 @@
-import './Currencies.scss';
+import React from 'react';
 
-interface Currency {
-  description: string;
-  code: string;
-  rate: number;
-}
+import { Currency } from '../../../@types';
+
+import './Currencies.scss';
 
 interface CurrenciesProps {
   currencies: Currency[];
