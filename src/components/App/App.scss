@@ -1,7 +1,17 @@
 @use '../../styles/variables' as v;
 
 .App {
-  background-color: v.$color-alt;
-  height: 100vh;
-  padding: 1rem;
+  /*
+    on fixe la hauteur à 90 % de son parent
+    (il sera centré automatiquement grâce au flexbox appliqué sur son parent)
+    on se sert de `display: flex`
+      pour « empiler les enfants » en colonne
+  */
+  background: v.$color-light;
+  color: v.$color;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  max-width: 480px;
+  width: 90vw;
 }

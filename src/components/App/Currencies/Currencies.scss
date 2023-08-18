@@ -1,41 +1,39 @@
 @use '../../../styles/variables' as v;
 
 .currencies {
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: v.$color-light;
-  color: v.$color-primary;
-  height: 60%;
-  overflow: scroll;
-  overflow-x: hidden;
+  flex-grow: 1;
+  padding-top: v.$gutter;
+  overflow: auto;
 
-  &__title {
-    font-size: 2.4rem;
+  &-title,
+  .currency {
+    border-bottom: 1px solid v.$color-alt;
+    height: v.$list-item-height;
+    line-height: v.$list-item-height;
+    padding: 0 v.$gutter;
+  }
+
+  &-title {
+    font-size: 1.6rem;
     font-weight: 700;
-    margin: 0;
   }
 
-  &__subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin: 0;
-  }
-
-  &__list {
+  &-list {
+    height: calc(100% - v.$list-item-height - v.$gutter);
     list-style: none;
-    margin: 0;
     padding: 0;
   }
+}
 
-  &__item {
-    border-bottom: 1px solid v.$color-primary;
-    padding: 1rem 0;
-    background-color: v.$color-light;
-    transition: background-color $delay-slow;
+.currency {
+  background-color: v.$color-light;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color v.$delay-slow linear;
 
-    &:hover {
-      background-color: v.$color-alt;
-      transition: background-color $delay-fast;
-    }
+  &:hover {
+    // .currency:hover
+    background-color: v.$color-alt;
+    transition: background-color v.$delay-fast linear;
   }
 }

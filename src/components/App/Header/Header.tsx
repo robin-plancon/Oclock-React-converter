@@ -1,10 +1,15 @@
 import './Header.scss';
 
-function Header() {
+interface HeaderProps {
+  baseAmount: number;
+}
+
+function Header({ baseAmount }: HeaderProps) {
   return (
     <header className="header">
-      <h1 className="header__title">Converter</h1>
-      <p className="header__subtitle">1 euro</p>
+      <h1 className="header-title">Converter</h1>
+
+      <p className="header-amount">{baseAmount} euro</p>
     </header>
   );
 }

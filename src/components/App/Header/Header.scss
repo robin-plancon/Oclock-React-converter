@@ -1,21 +1,29 @@
 @use '../../../styles/variables' as v;
 
 .header {
+  background: v.$color;
   color: v.$color-light;
-  background-color: v.$color-primary;
-  margin: 0rem auto;
-  padding: 1rem 0;
+  padding: v.$gutter * 1.5;
   text-align: center;
 
-  &__title {
-    font-size: 2.4rem;
+  /*
+    & va être remplacé par le texte du sélecteur parent
+  */
+
+  &-title {
+    // & = .header → &-title = .header-title
+    display: block;
+    font-size: 3.2rem;
     font-weight: 700;
-    margin: 0;
+
+    &:hover {
+      // & = .header-title → &:hover = .header-title:hover
+      color: v.$color-alt;
+    }
   }
 
-  &__subtitle {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin: 0;
+  &-amount {
+    // & = .header → &-amount = .header-amount
+    font-size: 2.1rem;
   }
 }

@@ -1,10 +1,13 @@
 @use 'sass:color';
 
-$color-primary: #bb5432;
-$color-alt: color.scale($color-primary, $lightness: 70%);
+$color: #bb5432;
+$color-alt: color.scale($color, $lightness: 70%);
 $color-light: #fff;
 
 $font-sans: 'League Spartan', Helvetica, Arial, sans-serif;
+
+$list-item-height: 3.2rem;
+$gutter: 1rem;
 
 $delay-fast: 0.2s;
 $delay-slow: 1s;

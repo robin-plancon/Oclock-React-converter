@@ -1,6 +1,6 @@
 import Header from './Header/Header';
 import Currencies from './Currencies/Currencies';
-import Footer from './Footer/Footer';
+import Result from './Result/Result';
 
 import currencies from '../../data/currencies';
 
@@ -9,9 +9,9 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header baseAmount={1} />
       <Currencies currencies={currencies} />
-      <Footer />
+      <Result />
     </div>
   );
 }

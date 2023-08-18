@@ -9,3 +9,15 @@ body {
   font-size: 1.6rem;
   font-family: v.$font-sans;
 }
+
+#root {
+  align-items: center;
+  background: v.$color-alt;
+  color: v.$color-light;
+  display: flex;
+  font-family: v.$font-sans;
+  font-weight: 300;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+}

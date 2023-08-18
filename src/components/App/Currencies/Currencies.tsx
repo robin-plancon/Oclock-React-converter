@@ -12,15 +12,15 @@ interface CurrenciesProps {
 
 function Currencies({ currencies }: CurrenciesProps) {
   const currenciesList = currencies.map((currency) => (
-    <li key={currency.code} className="currencies__item">
-      <p className="currencies__description">{currency.description}</p>
+    <li key={currency.code} className="currency">
+      {currency.description}
     </li>
   ));
 
   return (
     <div className="currencies">
-      <h2 className="currencies__title">Currencies</h2>
-      <ul className="currencies__list">{currenciesList}</ul>
+      <h2 className="currencies-title">Currencies</h2>
+      <ul className="currencies-list">{currenciesList}</ul>
     </div>
   );
 }
