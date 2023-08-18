@@ -7,11 +7,17 @@ import currencies from '../../data/currencies';
 import './App.scss';
 
 function App() {
+  const currentCurrency = {
+    description: 'Romanian Leu',
+    code: 'RON',
+    rate: 4.95366,
+  };
+
   return (
     <div className="App">
       <Header baseAmount={1} />
       <Currencies currencies={currencies} />
-      <Result />
+      <Result currency={currentCurrency} />
     </div>
   );
 }

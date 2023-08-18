@@ -1,10 +1,17 @@
 import './Result.scss';
 
-function Result() {
+interface ResultProps {
+  currency: {
+    description: string;
+    rate: number;
+  };
+}
+
+function Result({ currency }: ResultProps) {
   return (
     <div className="result">
-      <span className="result-value">1.09</span>
-      <span className="result-currency">United States Dollar</span>
+      <span className="result-value">{currency.rate.toFixed(2)}</span>
+      <span className="result-currency">{currency.description}</span>
     </div>
   );
 }
