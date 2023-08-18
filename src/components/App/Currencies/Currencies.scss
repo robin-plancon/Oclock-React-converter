@@ -3,7 +3,7 @@
 .currencies {
   margin: 0 auto;
   padding: 1rem;
-  background-color: v.$color;
+  background-color: v.$color-light;
   color: v.$color-primary;
   height: 60%;
   overflow: scroll;
@@ -30,12 +30,12 @@
   &__item {
     border-bottom: 1px solid v.$color-primary;
     padding: 1rem 0;
-    background-color: v.$color;
-    transition: background-color 1s;
+    background-color: v.$color-light;
+    transition: background-color $delay-slow;
 
     &:hover {
       background-color: v.$color-alt;
-      transition: background-color 0.2s;
+      transition: background-color $delay-fast;
     }
   }
 }

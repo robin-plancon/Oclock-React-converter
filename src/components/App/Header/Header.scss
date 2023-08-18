@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as v;
 
 .header {
-  color: v.$color;
+  color: v.$color-light;
   background-color: v.$color-primary;
   margin: 0rem auto;
   padding: 1rem 0;
