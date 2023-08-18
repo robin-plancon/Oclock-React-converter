@@ -7,7 +7,7 @@ interface TogglerProps {
 
 function Toggler({ isOpen, setIsOpen }: TogglerProps) {
   const handleClick = () => {
-    console.log('click');
+    // console.log('click');
     setIsOpen(!isOpen);
   };
 

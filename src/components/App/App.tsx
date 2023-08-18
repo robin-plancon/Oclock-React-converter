@@ -17,7 +17,8 @@ function App() {
     <div className="App">
       <Header baseAmount={1} isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      {isOpen ? <Currencies currencies={currencies} /> : false}
+      {/* {isOpen ? <Currencies currencies={currencies} /> : false} */}
+      {isOpen && <Currencies currencies={currencies} />}
 
       <Result currency={currentCurrency} />
     </div>

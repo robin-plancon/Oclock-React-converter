@@ -1,11 +1,12 @@
 @use '../../../styles/variables' as v;
 
 .currencies {
-  flex-grow: 1;
+  flex-grow: 1; // https://developer.mozilla.org/fr/docs/Web/CSS/flex-grow
+  overflow: auto; // on permet le scroll
   padding-top: v.$gutter;
-  overflow: auto;
 
-  &-title,
+  // &-title,
+  &-search,
   .currency {
     border-bottom: 1px solid v.$color-alt;
     height: v.$list-item-height;
@@ -13,13 +14,55 @@
     padding: 0 v.$gutter;
   }
 
-  &-title {
+  // &-title {
+  //   font-size: 1.6rem;
+  //   font-weight: 700;
+  // }
+
+  &-search {
+    border-width: 0 0 1px;
+    color: v.$color;
     font-size: 1.6rem;
     font-weight: 700;
+    width: 100%;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: v.$color;
+      font-weight: 300;
+    }
+
+    // Pour modifier la croix du type search
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+
+      // on a besoin d'encoder le `#` de notre couleur mise en variable
+      // # → %23
+      // on doit retirer le `#` et le remplacer
+      // pour le retirer, on se sert d'une fonction SCSS
+      // `str-slice('string', 2)` → 'tring' // commence au 2ème caractère
+      // puis on concatène
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23' + str-slice(
+          '#{v.$color-alt}',
+          2
+        ) + '"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>');
+      cursor: pointer;
+      height: 2.4rem;
+      width: 2.4rem;
+
+      &:hover {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23' + str-slice(
+            '#{v.$color}',
+            2
+          ) + '"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>');
+      }
+    }
   }
 
   &-list {
-    height: calc(100% - v.$list-item-height - v.$gutter);
     list-style: none;
     padding: 0;
   }
