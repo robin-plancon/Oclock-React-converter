@@ -6,9 +6,10 @@ import './Currencies.scss';
 
 interface CurrenciesProps {
   currencies: Currency[];
+  setCurrentCurrency: React.Dispatch<React.SetStateAction<Currency>>;
 }
 
-function Currencies({ currencies }: CurrenciesProps) {
+function Currencies({ currencies, setCurrentCurrency }: CurrenciesProps) {
   const [search, setSearch] = React.useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +32,13 @@ function Currencies({ currencies }: CurrenciesProps) {
   });
 
   const currenciesList = filteredList.map((currency) => (
-    <li key={currency.code} className="currency">
+    <li
+      key={currency.code}
+      className="currency"
+      onClick={() => {
+        setCurrentCurrency(currency);
+      }}
+    >
       {currency.description}
     </li>
   ));
