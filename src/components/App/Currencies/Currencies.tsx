@@ -21,6 +21,19 @@ function Currencies({ currencies, setCurrentCurrency }: CurrenciesProps) {
     setSearch(event.target.value);
   };
 
+  const handleClick = (clickedCurrency: Currency) => {
+    setCurrentCurrency(clickedCurrency);
+  };
+
+  const handleKeyPress = (
+    event: React.KeyboardEvent<HTMLLIElement>,
+    clickedCurrency: Currency
+  ) => {
+    if (event.key === 'Enter') {
+      handleClick(clickedCurrency);
+    }
+  };
+
   const filteredList = currencies.filter((currency) => {
     if (!search.trim().length) {
       return true;
@@ -32,14 +45,20 @@ function Currencies({ currencies, setCurrentCurrency }: CurrenciesProps) {
   });
 
   const currenciesList = filteredList.map((currency) => (
-    <li
-      key={currency.code}
-      className="currency"
-      onClick={() => {
-        setCurrentCurrency(currency);
-      }}
-    >
-      {currency.description}
+    <li key={currency.code} className="currency">
+      {/* { eslint-disable-next-line jsx-a11y/interactive-supports-focus} */}
+      <div
+        onClick={() => {
+          handleClick(currency);
+        }}
+        onKeyPress={(event) => {
+          handleKeyPress(event, currency);
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        {currency.description}
+      </div>
     </li>
   ));
 
