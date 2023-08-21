@@ -26,5 +26,19 @@
   &-amount {
     // & = .header → &-amount = .header-amount
     font-size: 2.1rem;
+
+    &__input {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid v.$color-light;
+      color: v.$color-light;
+      display: inline-block;
+      margin-right: 1.6rem;
+      width: 4.8rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }

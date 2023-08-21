@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { Currency } from '../../@types';
 import Header from './Header/Header';
 import Currencies from './Currencies/Currencies';
 import Result from './Result/Result';
@@ -10,13 +11,23 @@ import './App.scss';
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
-  const [currentCurrency, setCurrentCurrency] = useState(currencies[16]);
+  const [currentCurrency, setCurrentCurrency] = useState<Currency>(
+    currencies[16]
+  );
+  const [baseAmount, setBaseAmount] = useState(10);
 
-  // const currentCurrency = currencies[16];
+  const makeConversion = () => {
+    return baseAmount * currentCurrency.rate;
+  };
 
   return (
     <div className="App">
-      <Header baseAmount={1} isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Header
+        baseAmount={baseAmount}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        setBaseAmount={setBaseAmount}
+      />
 
       {/* {isOpen ? <Currencies currencies={currencies} /> : false} */}
       {isOpen && (
@@ -26,7 +37,7 @@ function App() {
         />
       )}
 
-      <Result currency={currentCurrency} />
+      <Result currency={currentCurrency} total={makeConversion()} />
     </div>
   );
 }

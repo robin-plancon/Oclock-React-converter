@@ -26,7 +26,7 @@ function Currencies({ currencies, setCurrentCurrency }: CurrenciesProps) {
   };
 
   const handleKeyPress = (
-    event: React.KeyboardEvent<HTMLLIElement>,
+    event: React.KeyboardEvent<HTMLElement>,
     clickedCurrency: Currency
   ) => {
     if (event.key === 'Enter') {
