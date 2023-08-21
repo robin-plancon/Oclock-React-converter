@@ -6,7 +6,7 @@ import './Currencies.scss';
 
 interface CurrenciesProps {
   currencies: Currency[];
-  setCurrentCurrency: React.Dispatch<React.SetStateAction<Currency>>;
+  setCurrentCurrency: React.Dispatch<React.SetStateAction<Currency | null>>;
 }
 
 function Currencies({ currencies, setCurrentCurrency }: CurrenciesProps) {

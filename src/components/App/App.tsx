@@ -1,24 +1,69 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Currency } from '../../@types';
 import Header from './Header/Header';
 import Currencies from './Currencies/Currencies';
 import Result from './Result/Result';
 
-import currencies from '../../data/currencies';
+// import currencies from '../../data/currencies';
+
+import { Currency } from '../../@types';
 
 import './App.scss';
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
-  const [currentCurrency, setCurrentCurrency] = useState<Currency>(
-    currencies[16]
-  );
   const [baseAmount, setBaseAmount] = useState(10);
 
-  const makeConversion = () => {
-    return baseAmount * currentCurrency.rate;
-  };
+  const [currencies, setCurrencies] = useState<Currency[]>([]);
+  const [currentCurrency, setCurrentCurrency] = useState<Currency | null>(null);
+
+  const [total, setTotal] = useState(0);
+
+  /* 
+    exchangerate API call to retrieve currencies List.
+  */
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.exchangerate.host/symbols');
+        const data = await response.json();
+
+        const symbols: Currency[] = Object.values(data.symbols);
+
+        console.log(symbols[0]);
+
+        setCurrencies(symbols);
+        setCurrentCurrency(symbols[0]);
+      } catch (err) {
+        // console.error(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  /* 
+    exchangerate API call to retrieve currencies rates.
+  */
+  useEffect(() => {
+    async function fetchTotal() {
+      if (!currentCurrency) {
+        return;
+      }
+      try {
+        const response = await fetch(
+          `https://api.exchangerate.host/convert?from=EUR&to=${currentCurrency.code}&amount=${baseAmount}`
+        );
+        const data = await response.json();
+
+        setTotal(data.result);
+      } catch (err) {
+        // console.error(err);
+      }
+    }
+
+    fetchTotal();
+  }, [baseAmount, currentCurrency]);
 
   return (
     <div className="App">
@@ -37,7 +82,7 @@ function App() {
         />
       )}
 
-      <Result currency={currentCurrency} total={makeConversion()} />
+      <Result currency={currentCurrency} total={total} />
     </div>
   );
 }
